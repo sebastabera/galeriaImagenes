@@ -1,0 +1,12 @@
+extends ../../layout.jade
+block contenido
+	div(class="container")
+		for imagen in imagenes
+			div(class="row tr")
+				div(class="col-sm-10")
+					h3=imagen.title
+				div(class="col-sm-2")
+					a(href="/app/imagenes/#{imagen.id}/edit" class="margin-edit margin-align-top btn btn-primary") Editar
+					form(action="/app/imagenes/#{imagen.id}?_method=DELETE" method="POST" class="link")
+						input(type="submit" value="Eliminar" class="margin-edit margin-align-top btn btn-danger")
+				hr

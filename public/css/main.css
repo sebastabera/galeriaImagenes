@@ -1,0 +1,16 @@
+.margin-edit{
+	margin-right: 4px;
+	margin-left: 2px;
+}
+
+.margin-align-top{
+	margin-top: 15px !important;
+}
+
+.tr:nth-of-type(odd){
+	background-color: #eee;
+}
+
+form.link{
+	display:  inline-block;
+}

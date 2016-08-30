@@ -1,0 +1,14 @@
+extends ../../layout.jade
+block contenido
+	div(class="container")
+		h2 Editar imagen
+		form(action="/app/imagenes/#{imagen._id}?_method=PUT", method="POST")
+			//el id del input debe ser el mismo que el for del label
+			div(class="form-group")
+				label(for="title") Título
+				input(type="text", name="title", placeholder="Title", id="title", class="form-control", value="#{imagen.title}")
+			//div(class="form-group")
+				label(for="archivo") Imagen
+				input(type="file", name="archivo", id="archivo", class="form-control")
+			div
+				input(type="submit" value="Guardar" class=" btn btn-danger")
