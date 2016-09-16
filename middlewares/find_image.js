@@ -2,7 +2,9 @@ var Imagen = require("../models/imagen");
 
 module.exports = function(req, res, next){
 
-	Imagen.findById(req.params.id, function(err, imagen){
+	Imagen.findById(req.params.id)
+	.populate("creator")
+	.exec(function(err, imagen){
 		if(imagen != null){
 			res.locals.imagen = imagen;
 			next();

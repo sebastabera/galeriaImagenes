@@ -23,12 +23,7 @@ router.get("/imagenes/:id/edit", function(req, res){
 
 router.route("/imagenes/:id")
 	.get(function(req,res){
-		if(!err){
 			res.render("app/imagenes/show");
-		}
-		else{
-			console.log("error");
-		}
 	})
 	.put(function(req,res){
 		Imagen.update({_id: req.params.id}, {$set:{title:req.body.title}}).then(function(img){
@@ -47,7 +42,9 @@ router.route("/imagenes/:id")
 
 router.route("/imagenes")
 	.get(function(req,res){
-		Imagen.find({}, function(err, imagenes){
+		Imagen.find({})
+		.populate("creator")
+		.exec(function(err, imagenes){
 			if(!err){
 				res.render("app/imagenes/index", {imagenes:imagenes});
 			}
@@ -59,7 +56,8 @@ router.route("/imagenes")
 	})
 	.post(function(req,res){
 		var data = {
-			title: req.body.title
+			title: req.body.title, 
+			creator: res.locals.user._id
 		};
 
 		var imagen = new Imagen(data);
