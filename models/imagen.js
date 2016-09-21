@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var imagen_schema =  new Schema({
 	title: {type:String, required:true},
-	creator: {type: Schema.TypesObjectId, rel:"User"}
+	creator: {type: Schema.Types.ObjectId, rel:"User"}
 });
 
 var Imagen = mongoose.model("Imagen", imagen_schema);

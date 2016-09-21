@@ -12,6 +12,9 @@ var session_middleware = require("./middlewares/session");
 //Sirve para poder utilizar otros metodos http diferentes a POST y GET
 var methodOverride = require("method-override");
 
+//dependencia que permite el manejo de archivos
+//guarda los archivos en una carpeta temporal
+var formidable = require("express-formidable");
 var app = express();
 
 //para poder acceder a archivos estaticos de nuestra pagina como css y js
@@ -30,6 +33,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 }));*/
 
 app.use(methodOverride("_method"));
+app.use(formidable.parse({keepExtensions: true}));
 
 app.use(cookieSession({
 	name: "session",

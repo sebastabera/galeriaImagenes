@@ -1,6 +1,6 @@
 var Imagen = require("../models/imagen");
 
-var owner_check = require("/image_permission");
+var owner_check = require("./image_permission");
 
 module.exports = function(req, res, next){
 

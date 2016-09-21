@@ -2,7 +2,7 @@ extends ../../layout.jade
 block contenido
 	div(class="container")
 		h2 Subir nueva imagen
-		form(action="/app/imagenes", method="POST")
+		form(action="/app/imagenes", method="POST" enctype="multipart/form-data")
 			//el id del input debe ser el mismo que el for del label
 			div(class="form-group")
 				label(for="title") Título
