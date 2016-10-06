@@ -7,6 +7,7 @@ module.exports = function(req, res, next){
 	Imagen.findById(req.params.id)
 		.populate("creator")
 		.exec(function(err, imagen){
+			console.log(imagen);
 		if(imagen != null && owner_check(imagen, req, res)){
 			res.locals.imagen = imagen;
 			next();

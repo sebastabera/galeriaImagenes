@@ -1,6 +1,6 @@
 var Imagen = require("../models/imagen");
 
-module.exports = function(imagen, req, res){
+module.exports = function(image, req, res){
 	//si el metodo es get y en la url no viene edit retorna true
 	if(req.method == 'GET' && req.path.indexOf("edit") < 0){
 		return true

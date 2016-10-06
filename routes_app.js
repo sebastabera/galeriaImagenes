@@ -23,12 +23,7 @@ router.get("/imagenes/:id/edit", function(req, res){
 
 router.route("/imagenes/:id")
 	.get(function(req,res){
-		if(!err){
 			res.render("app/imagenes/show");
-		}
-		else{
-			console.log("error");
-		}
 	})
 	.put(function(req,res){
 		Imagen.update({_id: req.params.id}, {$set:{title:req.body.title}}).then(function(img){
@@ -57,8 +52,9 @@ router.route("/imagenes")
 			}
 		})
 	})
-	.post(function(req,res){
+	.post(function(req,res){		
 		console.log(req.body.archivo);
+		console.log(res.locals.user);
 		var data = {
 			title: req.body.title,
 			creator: res.locals.user._id

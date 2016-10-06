@@ -78,11 +78,14 @@ app.get("/login", function(req, res){
 
 app.post("/sessions", function(req,res){
 	//consultas con promesas
+	console.log(req);
 	User.findOne({email:req.body.email, password: req.body.password}, {username:1, email:1, _id:1}).then(function(usrs){
-		if(usrs.length == 0){
+		console.log(usrs);
+		if(usrs == null){
 			res.send("No se encontro el usuario");
 		}else{
-			req.session.user_id = usrs._id
+			req.locals.user =users;
+			req.session.user_id = usrs._id;
 			res.redirect("/app");
 		}
 	}, function(err){
