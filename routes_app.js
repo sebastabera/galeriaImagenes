@@ -7,6 +7,7 @@ var router = express.Router();
 var image_finder_middleware = require("./middlewares/find_image");
 
 router.get("/", function(req,res){
+	console.log("llego");
 	res.render("app/home");
 });
 
